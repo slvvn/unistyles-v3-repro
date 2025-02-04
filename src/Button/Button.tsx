@@ -1,27 +1,26 @@
 import React from "react";
-import { Pressable, View, Text } from "react-native";
+import { Pressable, Text, useWindowDimensions } from "react-native";
 
 import $ from "./Button.styles";
 
 type Props = {
-  preset: "primary" | "secondary";
   children?: string;
   onPress: () => void;
 };
 
-const Button: React.FC<Props> = ({ preset, children, onPress }) => {
-  $.useVariants({ preset });
+const Button: React.FC<Props> = ({ children, onPress }) => {
+  const { width } = useWindowDimensions();
 
   return (
-    <Pressable accessibilityRole="button" onPress={onPress}>
-      {(state) => (
-        <View style={$.button(state)}>
-          <Text accessibilityRole="text">
-            {children}
-          </Text>
-        </View>
-      )}
-    </Pressable>
+    <>
+      <Pressable accessibilityRole="button" onPress={onPress} style={$.button}>
+        <Text accessibilityRole="text" style={$.text}>
+          {children} (width: {$.button.width})
+        </Text>
+      </Pressable>
+
+      <Text>Current window width: {width}</Text>
+    </>
   );
 };
 

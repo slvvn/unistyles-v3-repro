@@ -1,34 +1,16 @@
-import { PressableStateCallbackType } from "react-native";
-import { mq, StyleSheet } from "react-native-unistyles";
+import { StyleSheet } from "react-native-unistyles";
 
-const stylesheet = StyleSheet.create(({ colors, border, spacing }) => ({
-  button: ({ pressed }: PressableStateCallbackType) => ({
-    paddingVertical: spacing(2),
-    paddingHorizontal: spacing(6),
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    // gap: spacing(2),
-    // TODO: Not working in unistyles v3 now, see: https://github.com/jpudysz/react-native-unistyles/issues/534
-    gap: {
-      [mq.only.width(undefined, "sm")]: spacing(1),
-      [mq.only.width("md")]: spacing(2),
-    },
-    variants: {
-      preset: {
-        primary: {
-          backgroundColor: colors.backgroundFocus,
-          color: colors.textInverted,
-          borderColor: "transparent",
-        },
-        secondary: {
-          backgroundColor: "transparent",
-          color: colors.textDefault,
-          borderColor: colors.borderDefault,
-        },
-      },
-    },
-  }),
+const stylesheet = StyleSheet.create((theme, rt) => ({
+  button: {
+    paddingVertical: theme.spacing(2),
+    paddingHorizontal: theme.spacing(6),
+    width: rt.screen.width, // <-- This doesn't properly update on window resize
+    backgroundColor: rt.screen.width > 500 ? "blue" : "green", // <-- This doesn't properly update on window resize
+  },
+  text: {
+    textAlign: "center",
+    color: "white",
+  },
 }));
 
 export default stylesheet;

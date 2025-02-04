@@ -3,7 +3,6 @@
     "name": "unistyles-v3-repro",
     "slug": "unistyles-v3-repro",
     "version": "1.0.0",
-    "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
