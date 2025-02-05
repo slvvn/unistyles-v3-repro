@@ -9,10 +9,13 @@ type Props = {
 
 const styles = StyleSheet.create((theme, rt) => ({
   button: {
-    paddingVertical: theme.spacing(2),
-    paddingHorizontal: theme.spacing(6),
-    width: rt.screen.width, // <-- This doesn't properly update on window resize
-    backgroundColor: rt.screen.width > 500 ? "blue" : "green", // <-- This doesn't properly update on window resize
+    // Scenario 1: Does NOT work
+    padding: Math.max(rt.screen.width - 1400, 0) + theme.spacing(4),
+    backgroundColor: "blue",
+
+    // Scenario 2: Does work
+    // padding: Math.max(rt.screen.width - 1400, 0) + theme.spacing(4),
+    // backgroundColor: rt.screen.width > 500 ? "blue" : "green",
   },
   text: {
     textAlign: "center",
@@ -31,7 +34,7 @@ const Button: React.FC<Props> = ({ children, onPress }) => {
         style={styles.button}
       >
         <Text accessibilityRole="text" style={styles.text}>
-          {children} (width: {styles.button.width})
+          {children}
         </Text>
       </Pressable>
 
