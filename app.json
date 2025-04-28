@@ -35,10 +35,13 @@
           "backgroundColor": "#ffffff"
         }
       ],
-      "./plugins/with-deployment-targets"
+      "./plugins/with-deployment-targets",
+      "expo-font",
+      "expo-web-browser"
     ],
     "experiments": {
-      "typedRoutes": true
+      "typedRoutes": true,
+      "reactCompiler": true
     }
   }
 }
