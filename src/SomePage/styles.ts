@@ -1,19 +1,10 @@
 import { StyleSheet } from "react-native-unistyles";
 
-const stylesheet = StyleSheet.create(() => {
+const stylesheet = StyleSheet.create((theme) => {
   return {
     container: {
       padding: 32,
-      borderWidth: 4,
-      borderColor: {
-        xs: "darkblue",
-        md: "darkgreen",
-      },
-      backgroundColor: {
-        xs: "lightblue",
-        md: "lightgreen",
-        lg: "lightyellow",
-      },
+      backgroundColor: theme.colors.primary,
     },
   };
 });

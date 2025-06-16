@@ -7,7 +7,7 @@ module.exports = (api) => {
       [
         "react-native-unistyles/plugin",
         {
-          autoProcessRoot: "src",
+          root: "src",
         },
       ],
     ],
