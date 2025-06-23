@@ -1,10 +1,26 @@
 import { StyleSheet } from "react-native-unistyles";
 
-const stylesheet = StyleSheet.create((theme) => {
+const stylesheet = StyleSheet.create((theme, { insets }) => {
   return {
-    container: {
-      padding: 32,
-      backgroundColor: theme.colors.primary,
+    list: {
+      paddingVertical: 10,
+    },
+    listContent: {
+      paddingLeft: insets.left + 10,
+      paddingRight: insets.right + 10,
+      gap: 10,
+    },
+    item: {
+      backgroundColor: "blue",
+    },
+    itemInner: {
+      backgroundColor: "red",
+    },
+    itemList: {
+      paddingVertical: 10,
+    },
+    itemListContent: {
+      gap: 10,
     },
   };
 });

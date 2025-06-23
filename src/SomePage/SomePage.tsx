@@ -1,34 +1,62 @@
-import React, { useEffect } from "react";
-import { Text, View } from "react-native";
+import React from "react";
+import { SectionList, StyleProp, Text, View, ViewStyle } from "react-native";
+
+import FlatList from "@/src/FlatList/FlatList";
 
 import $ from "./styles";
-import { UnistylesRuntime, useUnistyles } from "react-native-unistyles";
+import { withUnistyles } from "react-native-unistyles";
+
+const Item = ({
+  style,
+  innerStyle,
+}: {
+  style?: StyleProp<ViewStyle>;
+  innerStyle?: StyleProp<ViewStyle>;
+}) => (
+  <View style={style}>
+    <View style={innerStyle}>
+      <Text>Item</Text>
+    </View>
+  </View>
+);
+
+const UniItem = withUnistyles(Item);
 
 const SomePage: React.FC = () => {
-  const { theme } = useUnistyles();
-  console.log(theme.colors.primary);
+  const renderItem = ({ item }: { item: { id: number; title: string } }) => (
+    <UniItem style={$.item} innerStyle={$.itemInner} />
+  );
 
-  useEffect(() => {
-    setTimeout(() => {
-      UnistylesRuntime.updateTheme("brand", (theme) => ({
-        ...theme,
-        colors: {
-          ...theme.colors,
-          primary: "red",
-        },
-      }));
-    }, 1000);
-  }, []);
+  const renderSection = ({ item }: { item: { id: number; title: string } }) => (
+    <View style={$.item}>
+      <Text>{item.title}</Text>
+      <FlatList
+        horizontal
+        style={$.itemList}
+        contentContainerStyle={$.itemListContent}
+        data={Array.from({ length: 10 }, (_, index) => ({
+          id: index,
+          title: `Item ${index}`,
+        }))}
+        renderItem={renderItem}
+      />
+    </View>
+  );
 
   return (
-    <>
-      <View style={$.container}>
-        <Text>Updating properly</Text>
-      </View>
-      <View style={{ backgroundColor: theme.colors.primary, padding: 32 }}>
-        <Text>Not updating properly</Text>
-      </View>
-    </>
+    <SectionList
+      style={$.list}
+      contentContainerStyle={$.listContent}
+      sections={[
+        {
+          data: Array.from({ length: 10 }, (_, index) => ({
+            id: index,
+            title: `Section ${index}`,
+          })),
+        },
+      ]}
+      renderItem={renderSection}
+    />
   );
 };
 
