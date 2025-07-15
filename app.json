@@ -10,7 +10,8 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.silvan.b.unistylesv3repro"
+      "bundleIdentifier": "com.silvan.b.unistylesv3repro",
+      "appleTeamId": "S5H4ZA2N63"
     },
     "android": {
       "adaptiveIcon": {

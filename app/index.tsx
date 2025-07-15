@@ -1,11 +1,11 @@
 import { View } from "react-native";
 
-import SomePage from "@/src/SomePage/SomePage";
+import NotWorkingPage from "@/src/NotWorkingPage/NotWorkingPage";
 
 export default function Index() {
   return (
     <View>
-      <SomePage />
+      <NotWorkingPage />
     </View>
   );
 }
