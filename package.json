@@ -1,6 +1,6 @@
 {
   "name": "unistyles-v3-repro",
-  "main": "expo-router/entry",
+  "main": "index.ts",
   "version": "1.0.0",
   "scripts": {
     "start": "expo start",

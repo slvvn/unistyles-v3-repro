@@ -1,26 +1,34 @@
 import { StyleSheet } from "react-native-unistyles";
 
-const stylesheet = StyleSheet.create((theme, { insets }) => {
+const stylesheet = StyleSheet.create((theme, rt) => {
   return {
-    list: {
-      paddingVertical: 10,
+    wrapper: {
+      width: "100%",
+      height: "100%",
+      paddingLeft: rt.insets.left,
+      paddingRight: rt.insets.right,
+      paddingTop: rt.insets.top,
+      paddingBottom: rt.insets.bottom,
     },
-    listContent: {
-      paddingLeft: insets.left + 10,
-      paddingRight: insets.right + 10,
+    container: {
+      width: "100%",
+      height: "100%",
+      backgroundColor: theme.colors.primary,
+      padding: 10,
       gap: 10,
     },
-    item: {
-      backgroundColor: "blue",
+    button: {
+      backgroundColor: theme.colors.background,
+      padding: 10,
+      borderRadius: 5,
     },
-    itemInner: {
-      backgroundColor: "red",
-    },
-    itemList: {
-      paddingVertical: 10,
-    },
-    itemListContent: {
-      gap: 10,
+    element: {
+      backgroundColor: {
+        xs: theme.colors.success,
+        md: theme.colors.danger,
+      },
+      padding: 10,
+      borderRadius: 5,
     },
   };
 });

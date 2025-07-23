@@ -1,62 +1,33 @@
 import React from "react";
-import { SectionList, StyleProp, Text, View, ViewStyle } from "react-native";
-
-import FlatList from "@/src/FlatList/FlatList";
+import { Text, TouchableOpacity, View } from "react-native";
 
 import $ from "./styles";
-import { withUnistyles } from "react-native-unistyles";
-
-const Item = ({
-  style,
-  innerStyle,
-}: {
-  style?: StyleProp<ViewStyle>;
-  innerStyle?: StyleProp<ViewStyle>;
-}) => (
-  <View style={style}>
-    <View style={innerStyle}>
-      <Text>Item</Text>
-    </View>
-  </View>
-);
-
-const UniItem = withUnistyles(Item);
+import { UnistylesRuntime } from "react-native-unistyles";
 
 const SomePage: React.FC = () => {
-  const renderItem = ({ item }: { item: { id: number; title: string } }) => (
-    <UniItem style={$.item} innerStyle={$.itemInner} />
-  );
-
-  const renderSection = ({ item }: { item: { id: number; title: string } }) => (
-    <View style={$.item}>
-      <Text>{item.title}</Text>
-      <FlatList
-        horizontal
-        style={$.itemList}
-        contentContainerStyle={$.itemListContent}
-        data={Array.from({ length: 10 }, (_, index) => ({
-          id: index,
-          title: `Item ${index}`,
-        }))}
-        renderItem={renderItem}
-      />
-    </View>
-  );
-
   return (
-    <SectionList
-      style={$.list}
-      contentContainerStyle={$.listContent}
-      sections={[
-        {
-          data: Array.from({ length: 10 }, (_, index) => ({
-            id: index,
-            title: `Section ${index}`,
-          })),
-        },
-      ]}
-      renderItem={renderSection}
-    />
+    <View style={$.wrapper}>
+      <View style={$.container}>
+        <Text>This should never be outside of safe area</Text>
+
+        <TouchableOpacity
+          style={$.button}
+          onPress={() => {
+            UnistylesRuntime.setTheme(
+              UnistylesRuntime.themeName === "alternate" ? "brand" : "alternate"
+            );
+          }}
+        >
+          <Text>Change theme</Text>
+        </TouchableOpacity>
+
+        <View style={$.element}>
+          <Text>
+            This should green in for sm screens and red for &gt; md screens
+          </Text>
+        </View>
+      </View>
+    </View>
   );
 };
 

@@ -46,6 +46,7 @@ const THEME = {
 
 type AppThemes = {
   brand: typeof THEME;
+  alternate: typeof THEME;
 };
 
 declare module "react-native-unistyles" {
@@ -59,6 +60,13 @@ StyleSheet.configure({
   breakpoints,
   themes: {
     brand: THEME,
+    alternate: {
+      ...THEME,
+      colors: {
+        ...THEME.colors,
+        primary: "red",
+      },
+    },
   },
   settings: {
     initialTheme: "brand",
