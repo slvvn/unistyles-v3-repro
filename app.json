@@ -42,7 +42,6 @@
       ],
       "./plugins/with-deployment-targets",
       "expo-font",
-      "expo-web-browser",
       "react-native-edge-to-edge"
     ],
     "experiments": {

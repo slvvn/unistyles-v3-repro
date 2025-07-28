@@ -1,9 +1,42 @@
-import { Stack } from "expo-router";
+import { useEffect, useState } from "react";
+import { View } from "react-native";
+import { UnistylesRuntime } from "react-native-unistyles";
 
-export default function RootLayout() {
+import PageLayout from "@/src/components/PageLayout/PageLayout";
+
+const useSimulatedQuery = () => {
+  const [data, setData] = useState<Record<string, string> | null>(null);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setData({
+        background: "red",
+      });
+    }, Math.random() * 1000);
+  }, []);
+  return { data };
+};
+
+const Layout: React.FC = () => {
+  const { data: someSimulatedRemoteTheme } = useSimulatedQuery();
+
+  useEffect(() => {
+    if (someSimulatedRemoteTheme) {
+      UnistylesRuntime.updateTheme("brand", (currentTheme) => ({
+        ...currentTheme,
+        colors: {
+          ...currentTheme.colors,
+          ...someSimulatedRemoteTheme,
+        },
+      }));
+    }
+  }, [someSimulatedRemoteTheme]);
+
   return (
-    <Stack>
-      <Stack.Screen name="index" options={{ headerShown: false }} />
-    </Stack>
+    <PageLayout>
+      <View style={{ width: 100, height: 100, backgroundColor: "blue" }} />
+    </PageLayout>
   );
-}
+};
+
+export default Layout;

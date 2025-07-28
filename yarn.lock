@@ -1369,6 +1369,14 @@
   dependencies:
     "@radix-ui/react-compose-refs" "1.1.2"
 
+"@react-native-tvos/virtualized-lists@0.79.5-0":
+  version "0.79.5-0"
+  resolved "https://registry.yarnpkg.com/@react-native-tvos/virtualized-lists/-/virtualized-lists-0.79.5-0.tgz#993ec389b38845919ab21c789a9a67e0696da809"
+  integrity sha512-VvZyBraMdMctuT9sjv1XOirh38PaPQwXjdagfiSnn2Vx5P2X/EHqiqx+UkKZK1AcxUK2dQCI+roXZboRXIB+Bw==
+  dependencies:
+    invariant "^2.2.4"
+    nullthrows "^1.1.1"
+
 "@react-native/assets-registry@0.79.5":
   version "0.79.5"
   resolved "https://registry.yarnpkg.com/@react-native/assets-registry/-/assets-registry-0.79.5.tgz#90a178ec6646a22eb4218285cc2df7fd82603e34"
@@ -1499,14 +1507,6 @@
   version "0.74.89"
   resolved "https://registry.yarnpkg.com/@react-native/normalize-colors/-/normalize-colors-0.74.89.tgz#b8ac17d1bbccd3ef9a1f921665d04d42cff85976"
   integrity sha512-qoMMXddVKVhZ8PA1AbUCk83trpd6N+1nF2A6k1i6LsQObyS92fELuk8kU/lQs6M7BsMHwqyLCpQJ1uFgNvIQXg==
-
-"@react-native/virtualized-lists@0.79.5":
-  version "0.79.5"
-  resolved "https://registry.yarnpkg.com/@react-native/virtualized-lists/-/virtualized-lists-0.79.5.tgz#5dbc01dcb4c836d40edcb4034b240a300ee310fb"
-  integrity sha512-EUPM2rfGNO4cbI3olAbhPkIt3q7MapwCwAJBzUfWlZ/pu0PRNOnMQ1IvaXTf3TpeozXV52K1OdprLEI/kI5eUA==
-  dependencies:
-    invariant "^2.2.4"
-    nullthrows "^1.1.1"
 
 "@react-navigation/bottom-tabs@^7.2.0", "@react-navigation/bottom-tabs@^7.3.10":
   version "7.4.2"
@@ -5094,7 +5094,7 @@ react-native-is-edge-to-edge@^1.1.6, react-native-is-edge-to-edge@^1.1.7:
   resolved "https://registry.yarnpkg.com/react-native-is-edge-to-edge/-/react-native-is-edge-to-edge-1.2.1.tgz#64e10851abd9d176cbf2b40562f751622bde3358"
   integrity sha512-FLbPWl/MyYQWz+KwqOZsSyj2JmLKglHatd3xLZWskXOpRaio4LfEDEz8E/A6uD8QoTHW6Aobw1jbEwK7KMgR7Q==
 
-react-native-nitro-modules@^0.26.4:
+react-native-nitro-modules@0.26.4:
   version "0.26.4"
   resolved "https://registry.yarnpkg.com/react-native-nitro-modules/-/react-native-nitro-modules-0.26.4.tgz#6d99f5f105ca0ad337e99dab9f454c4ace16ce06"
   integrity sha512-sCZ0U+FY6JM73HaZYyc4kSRV7JQZXGfbimpYJzaAaZFQMGpJFkD5c3Jt66j1v83wN/m6D/SM9yyx+dN6XTfGAg==
@@ -5131,7 +5131,7 @@ react-native-screens@~4.11.1:
     react-native-is-edge-to-edge "^1.1.7"
     warn-once "^0.1.0"
 
-react-native-unistyles@^3.0.7:
+react-native-unistyles@3.0.7:
   version "3.0.7"
   resolved "https://registry.yarnpkg.com/react-native-unistyles/-/react-native-unistyles-3.0.7.tgz#182cfb3efb6d3ea70e67ab2013a24fde916231e6"
   integrity sha512-lgbEgrMSAJOMYhD5TI1EcRfL0EaJpmbJIxOhLP6t6hziCWy4bcrC8tZ7e+KAhcipPGs9UEVfW1aWgVwQXqwykw==
@@ -5158,19 +5158,19 @@ react-native-webview@13.13.5:
     escape-string-regexp "^4.0.0"
     invariant "2.2.4"
 
-react-native@0.79.5:
-  version "0.79.5"
-  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.79.5.tgz#a91cd92bb282a4f8420fdd64fe3a9434580404b2"
-  integrity sha512-jVihwsE4mWEHZ9HkO1J2eUZSwHyDByZOqthwnGrVZCh6kTQBCm4v8dicsyDa6p0fpWNE5KicTcpX/XXl0ASJFg==
+"react-native@npm:react-native-tvos@0.79.5-0":
+  version "0.79.5-0"
+  resolved "https://registry.yarnpkg.com/react-native-tvos/-/react-native-tvos-0.79.5-0.tgz#184244e2456f33ffbbdec54db70c13594e7834b3"
+  integrity sha512-ayl3M5t+HEib1Kl46QK+VQuFTwY7uAKpLjZlVRlVPMoIVWKa8+gqxM8CeCeaDL+KEbC5cMYxa300fQWG5WJMZQ==
   dependencies:
     "@jest/create-cache-key-function" "^29.7.0"
+    "@react-native-tvos/virtualized-lists" "0.79.5-0"
     "@react-native/assets-registry" "0.79.5"
     "@react-native/codegen" "0.79.5"
     "@react-native/community-cli-plugin" "0.79.5"
     "@react-native/gradle-plugin" "0.79.5"
     "@react-native/js-polyfills" "0.79.5"
     "@react-native/normalize-colors" "0.79.5"
-    "@react-native/virtualized-lists" "0.79.5"
     abort-controller "^3.0.0"
     anser "^1.4.9"
     ansi-regex "^5.0.0"
