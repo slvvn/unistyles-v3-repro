@@ -1,50 +1,25 @@
-# Welcome to your Expo app 👋
+# Repro: Unistyles variants + `Animated.Text` + breakpoint-based style
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## What goes wrong
 
-## Get started
+- **Expected:** Primary button label stays **white** on the blue background after rotating the iOS simulator.
+- **Actual (bug):** After rotation, the label can show **blue** text — the base `color` on the `label` style before variants — meaning variant resolution for the label is not applied correctly on native after a breakpoint/layout change.
 
-1. Install dependencies
+## How to reproduce
 
-   ```bash
-   npm install
-   ```
+1. Install deps and run on iOS.
+2. Open the app and the index screen with the button on it will be shown.
+3. Rotate the simulator from portrait to landscape.
+4. Observe the label color changing to **blue**, while it should stay **white**.
+5. Now comment out the style property in the parent that uses a breakpoint-based value (the `flex`).
+6. Rotate the simulator from portrait to landscape.
+7. Observe the label color correctly staying **white**.
 
-2. Start the app
+## Suspected cause
 
-   ```bash
-    npx expo start
-   ```
+It looks like it has something to do with this combination:
 
-In the output, you'll find options to open the app in a
+1. Having a parent with a breakpoint-based style (e.g. `flex: { md: 1 }`) in this case.
+2. Having child with an **`Animated.Text`** inside it and applying variant-based style on it.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Doesn't happen with the normal React Native `Text` component.

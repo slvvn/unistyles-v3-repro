@@ -1,33 +1,23 @@
 import { StyleSheet } from "react-native-unistyles";
 
-const breakpoints = {
+const BREAKPOINTS = {
   xs: 0,
   sm: 576,
   md: 768,
   lg: 1024,
-  xl: 1200,
-  xxl: 2000,
-  xxxl: 4000,
 } as const;
 
-type AppBreakpoints = typeof breakpoints;
+const COLORS_A = {
+  background: "#ffffff",
+  foreground: "#000000",
+};
 
-const THEME = {
-  colors: {
-    primary: "#007bff",
-    secondary: "#6c757d",
-    success: "#28a745",
-    danger: "#dc3545",
-    warning: "#ffc107",
-    info: "#17a2b8",
-    light: "#f8f9fa",
-    dark: "#343a40",
-    background: "#f8f9fa",
-    backgroundFocus: "#007bff",
-    textDefault: "#212529",
-    textInverted: "#f8f9fa",
-    borderDefault: "#ced4da",
-  },
+const COLORS_B = {
+  background: "#000000",
+  foreground: "#ffffff",
+};
+
+const BASE_THEME = {
   border: {
     widths: {
       sm: 1,
@@ -44,24 +34,40 @@ const THEME = {
   spacing: (factor: number) => factor * 4,
 };
 
+const THEME_A = {
+  ...BASE_THEME,
+  colors: COLORS_A,
+};
+
+const THEME_B = {
+  ...BASE_THEME,
+  colors: COLORS_B,
+};
+
 type AppThemes = {
-  brand: typeof THEME;
+  a: typeof THEME_A;
+  b: typeof THEME_B;
 };
 
 declare module "react-native-unistyles" {
   // eslint-disable-next-line @typescript-eslint/no-empty-object-type
   export interface UnistylesThemes extends AppThemes {}
-  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-  export interface UnistylesBreakpoints extends AppBreakpoints {}
+  export interface UnistylesBreakpoints {
+    xs: number;
+    sm: number;
+    md: number;
+    lg: number;
+  }
 }
 
 StyleSheet.configure({
-  breakpoints,
   themes: {
-    brand: THEME,
+    a: THEME_A,
+    b: THEME_B,
   },
+  breakpoints: { ...BREAKPOINTS },
   settings: {
-    initialTheme: "brand",
+    initialTheme: "a",
     adaptiveThemes: false,
   },
 });

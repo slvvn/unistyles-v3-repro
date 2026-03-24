@@ -3,14 +3,14 @@
     "name": "unistyles-v3-repro",
     "slug": "unistyles-v3-repro",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "default",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
-    "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.silvan.b.unistylesv3repro"
+      "bundleIdentifier": "com.silvan.b.unistylesv3repro",
+      "deploymentTarget": "16.0"
     },
     "android": {
       "adaptiveIcon": {
@@ -35,7 +35,9 @@
           "backgroundColor": "#ffffff"
         }
       ],
-      "./plugins/with-deployment-targets"
+      "./plugins/with-deployment-targets",
+      "expo-font",
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true

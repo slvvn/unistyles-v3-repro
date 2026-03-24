@@ -1,18 +1,14 @@
-import Button from "@/src/Button/Button";
 import { View } from "react-native";
+
+import Component from "@/src/Component/Component";
+import Parent from "@/src/Parent/Parent";
 
 export default function Index() {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Button preset="primary" onPress={() => console.log("Button pressed")}>
-        Press me
-      </Button>
+    <View style={{ flex: 1 }}>
+      <Parent>
+        <Component preset="primary" label="INTRO/PAGE/SIGN_IN/CTA/LABEL" />
+      </Parent>
     </View>
   );
 }
